@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salvatore Italian Food</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        barlow: ['Barlow', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#ca3c3f',
+                        dark: '#333333'
+                    }
+                }
+            }
+        }
+    </script>
+
+    </script>
+
+    <!-- animação do botão hamburguer -->
+    <style>
+        /* Primeira barra gira */
+        #btn-mobile.active span:nth-child(1) {
+            transform: rotate(45deg) translateY(8px);
+        }
+
+        /* Barra do meio some */
+        #btn-mobile.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        /* Última barra gira */
+        #btn-mobile.active span:nth-child(3) {
+            transform: rotate(-45deg) translateY(-8px);
+        }
+        .dm-serif-display-regular {
+  font-family: "DM Serif Display", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.dm-serif-display-regular-italic {
+  font-family: "DM Serif Display", serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+    </style>
+
+</head>
+
+
+<body class="font-barlow text-[#222222] bg-gray-100">
+
+    <!-- ================= HEADER ================= -->
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between items-center">
+
+                <!-- Logo -->
+                <a href="#" class="flex items-center py-4 px-2 w-20">
+                    <img src="./images/logo2.png" alt="Haruy Sushi">
+                </a>
+
+
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="#" class="py-4 px-2 text-primary border-b-4 border-primary font-semibold">
+                        Cardápio
+                    </a>
+                    <a href="#"
+                        class="py-4 px-2 text-gray-500 font-semibold hover:text-primary transition duration-300">
+                        Sobre
+                    </a>
+                    <a href="#"
+                        class="py-4 px-2 text-gray-500 font-semibold hover:text-primary transition duration-300">
+                        Contato
+                    </a>
+                </div>
+
+                <!-- Botão Hambúrguer Mobile -->
+                <div class="md:hidden flex items-center">
+                    <button id="btn-mobile" class="flex flex-col justify-center items-center w-8 h-8 space-y-1">
+
+                        <!-- 3 Barras -->
+                        <span class="block w-6 h-0.5 bg-gray-600 transition-all duration-300"></span>
+                        <span class="block w-6 h-0.5 bg-gray-600 transition-all duration-300"></span>
+                        <span class="block w-6 h-0.5 bg-gray-600 transition-all duration-300"></span>
+
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Menu Mobile -->
+        <div class="hidden md:hidden bg-white shadow-md" id="menu-mobile">
+            <ul>
+                <li>
+                    <a href="#" class="block text-sm px-4 py-3 text-white bg-primary font-semibold">
+                        Cardápio
+                    </a>
+                </li>
+                <li>
+                    <a href="#"
+                        class="block text-sm px-4 py-3 hover:bg-primary hover:text-white transition duration-300">
+                        Sobre
+                    </a>
+                </li>
+                <li>
+                    <a href="#"
+                        class="block text-sm px-4 py-3 hover:bg-primary hover:text-white transition duration-300">
+                        Contato
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ================= SCRIPT DO MENU ================= -->
+    <script>
+        const btn = document.getElementById('btn-mobile');
+        const menu = document.getElementById('menu-mobile');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden'); // Mostra/esconde menu
+            btn.classList.toggle('active');  // Ativa animação X
+        });
+    </script>
+
+
+    <!-- BANNER -->
+    <section class="w-full text-center mt-10 px-6 md:px-0">
+        <div class="flex flex-col md:flex-row items-center justify-center">
+
+            <div class="w-full md:w-[45%] mb-8 md:mb-0">
+                <p
+                    class="text-2xl md:text-[40px] md:text-left md:px-24 font-semibold leading-relaxed md:leading-[1.3]">
+                    Viaje para a Itália através do paladar
+                </p>
+
+                <div class="mt-10 md:mt-12">
+                    <a href="#cardapio" class="border border-dark rounded-xl px-6 py-4 text-lg 
+          hover:bg-primary hover:text-white 
+          focus:bg-green-800 focus:text-white
+          transition">
+                        VEJA O CARDÁPIO
+                    </a>
+                </div>
+            </div>
+
+            <div class="w-full md:w-[45%]">
+                <img src="./images/prato.png" alt="Prato" class="w-[90%] mx-auto">
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CARDÁPIO -->
+    <section id="cardapio"
+        class="border-t border-dashed border-gray-400 w-full max-w-[700px] mx-auto mt-24 pt-12 pb-4 px-4 text-center">
+
+        <h1 class="text-3xl font-bold mb-6  text-green-900">Cardápio</h1>
+
+        <!--Menu Categoria Início-->
+        <nav id="nav-categorias" class="overflow-x-auto whitespace-nowrap snap-x flex gap-2 mt-6 pb-1">
+            <button data-cat="massas"
+                class="snap-start px-4 py-1 rounded-full bg-primary text-white font-bold text-sm transition-transform duration-150 cursor-pointer flex-shrink-0 btn-cat">
+                Massas
+            </button>
+            <button data-cat="risotos"
+                class="snap-start px-4 py-1 rounded-full bg-primary text-white font-bold text-sm transition-transform duration-150 cursor-pointer flex-shrink-0 btn-cat">
+                Risotos
+            </button>
+            <button data-cat="bebidas"
+                class="snap-start px-4 py-1 rounded-full bg-primary text-white font-bold text-sm transition-transform duration-150 cursor-pointer flex-shrink-0 btn-cat">
+                Bebidas
+            </button>
+            <button data-cat="sobremesas"
+                class="snap-start px-4 py-1 rounded-full bg-primary text-white font-bold text-sm transition-transform duration-150 cursor-pointer flex-shrink-0 btn-cat">
+                Sobremesas
+            </button>
+        </nav>
+        <!--Menu Categoria Fim-->
+
+        <div id="cat-massas" class="categoria-conteudo">
+            <div class="text-left text-dark font-extrabold text-[22px] mt-8 mb-4 ">Massas</div>
+            <div class="grid-cols-2 gap-4">
+                <div
+                    class="bg-white rounded-[20px] p-3 shadown-sm border border-gray-100 relative flex flex-col hover:shadow-md transition-shadown group">
+                    <div class="absolute inset-0 z-0 cursor-pointer"
+                        onclick="abrirModalDetalhes('Ravioli á moda casa' , 79.00 ,' Ravioli rechedo com queijo nobre e molho caseiro italiano.', './images/comb.webp', 's_1' )">
+
+                    </div>
+                    <button class="absolute top-3 right-3 text-gray-300 hover:text-primary transition-colors z-10">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                            stroke="currentColor" class="w-5 h-5">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                        </svg>
+                    </button>
+
+                    <img src="./images/comb.webp" alt="Ravioli à moda casa"
+                        class="w-full h-24 object-contain mb-2 mt-2 transition-transform duration-300 drop-shadow-sm group-hover:scale-105 pointer-events-none relative z-10 ">
+                    <div class="text-left w-full mt-auto relative z-10 pointer-events-none">
+                        <h4 class="font-bold text-dark text-sm leading-tight">Ravioli á moda casa</h4>
+                        <p class="text-primary font-black text-lg leading-none mt-1 ">R$ 79,00</p>
+                    </div>
+                    <button onclick="adicionarItem('s_1', 'Ravioli á moda casa', 79.00 )"
+                        class="w-full bg-primary text-white py-2 rounded-xl text-xs font-bold mt-3 shadow-md hover:bg-red-700 active:scale-95 transition-all z-10 relative ">
+                        Adicionar ao carrinho
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+         <div id="cat-massas" class="categoria-conteudo">
+            <div class="grid-cols-2 gap-4">
+                <div
+                    class="bg-white rounded-[20px] p-3 shadown-sm border border-gray-100 relative flex flex-col hover:shadow-md transition-shadown group">
+                    <div class="absolute inset-0 z-0 cursor-pointer"
+                        onclick="abrirModalDetalhes('Agnolotti' , 65.00 ,' Recheado de Carne assada com espinafre.', './images/comb.webp', 's_2' )">
+
+                    </div>
+                    <button class="absolute top-3 right-3 text-gray-300 hover:text-primary transition-colors z-10">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                            stroke="currentColor" class="w-5 h-5">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                        </svg>
+                    </button>
+
+                    <img src="./images/comb.webp" alt="Agnolotti"
+                        class="w-full h-24 object-contain mb-2 mt-2 transition-transform duration-300 drop-shadow-sm group-hover:scale-105 pointer-events-none relative z-10 ">
+                    <div class="text-left w-full mt-auto relative z-10 pointer-events-none">
+                        <h4 class="font-bold text-dark text-sm leading-tight">Agnolotti</h4>
+                        <p class="text-primary font-black text-lg leading-none mt-1 ">R$ 65,00</p>
+                    </div>
+                    <button onclick="adicionarItem('s_2', 'Agnolotti', 65.00 )"
+                        class="w-full bg-primary text-white py-2 rounded-xl text-xs font-bold mt-3 shadow-md hover:bg-red-700 active:scale-95 transition-all z-10 relative ">
+                        Adicionar ao carrinho
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+         <div id="cat-massas" class="categoria-conteudo">
+            <div class="grid-cols-2 gap-4">
+                <div
+                    class="bg-white rounded-[20px] p-3 shadown-sm border border-gray-100 relative flex flex-col hover:shadow-md transition-shadown group">
+                    <div class="absolute inset-0 z-0 cursor-pointer"
+                        onclick="abrirModalDetalhes('Espaguetti a Bolonhesa' , 95.00 ,' Espaguetti caseiro nobre com molho a bolonhesa da casa.', './images/comb.webp', 's_3' )">
+
+                    </div>
+                    <button class="absolute top-3 right-3 text-gray-300 hover:text-primary transition-colors z-10">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                            stroke="currentColor" class="w-5 h-5">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                        </svg>
+                    </button>
+
+                    <img src="./images/comb.webp" alt="Espaguetti a Bolonhesa"
+                        class="w-full h-24 object-contain mb-2 mt-2 transition-transform duration-300 drop-shadow-sm group-hover:scale-105 pointer-events-none relative z-10 ">
+                    <div class="text-left w-full mt-auto relative z-10 pointer-events-none">
+                        <h4 class="font-bold text-dark text-sm leading-tight">Espaguetti a Bolonhesa</h4>
+                        <p class="text-primary font-black text-lg leading-none mt-1 ">R$ 95,00</p>
+                    </div>
+                    <button onclick="adicionarItem('s_3', 'Espaguetti a Bolonhesa<', 95.00 )"
+                        class="w-full bg-primary text-white py-2 rounded-xl text-xs font-bold mt-3 shadow-md hover:bg-red-700 active:scale-95 transition-all z-10 relative ">
+                        Adicionar ao carrinho
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="cat-massas" class="categoria-conteudo">
+            <div class="grid-cols-2 gap-4">
+                <div
+                    class="bg-white rounded-[20px] p-3 shadown-sm border border-gray-100 relative flex flex-col hover:shadow-md transition-shadown group">
+                    <div class="absolute inset-0 z-0 cursor-pointer"
+                        onclick="abrirModalDetalhes('Orecchiette com cime di rapa' , 95.00 ,' Massa em formato de orelhinha com grelos de nabo cime di rapa amargos, alho, azeite e filés de anchova que derretem no molho.', './images/comb.webp', 's_4' )">
+
+                    </div>
+                    <button class="absolute top-3 right-3 text-gray-300 hover:text-primary transition-colors z-10">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                            stroke="currentColor" class="w-5 h-5">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                        </svg>
+                    </button>
+
+                    <img src="./images/comb.webp" alt="Orecchiette com cime di rapa"
+                        class="w-full h-24 object-contain mb-2 mt-2 transition-transform duration-300 drop-shadow-sm group-hover:scale-105 pointer-events-none relative z-10 ">
+                    <div class="text-left w-full mt-auto relative z-10 pointer-events-none">
+                        <h4 class="font-bold text-dark text-sm leading-tight">Orecchiette com cime di rapa</h4>
+                        <p class="text-primary font-black text-lg leading-none mt-1 ">R$ 95,00</p>
+                    </div>
+                    <button onclick="adicionarItem('s_4', 'Orecchiette com cime di rapa<', 95.00 )"
+                        class="w-full bg-primary text-white py-2 rounded-xl text-xs font-bold mt-3 shadow-md hover:bg-red-700 active:scale-95 transition-all z-10 relative ">
+                        Adicionar ao carrinho
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+           <!--BEBIDAS-->
+            <div id="cat-bebidas" class="categoria-conteudo hidden">
+            <div class="text-left text-dark font-extrabold text-[22px] mt-8 mb-4 ">Bebidas</div>
+           <div class="grid-cols-2 gap-4">
+                <div
+                    class="bg-white rounded-[20px] p-3 shadown-sm border border-gray-100 relative flex flex-col hover:shadow-md transition-shadown group">
+                    <div class="absolute inset-0 z-0 cursor-pointer"
+                        onclick="abrirModalDetalhes('Refrigerante',8.00 ,'Lata Coca-Cola, Guaraná ', './images/coca_cola.png', 's_5' )">
+
+                    </div>
+                    <button class="absolute top-3 right-3 text-gray-300 hover:text-primary transition-colors z-10">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                            stroke="currentColor" class="w-5 h-5">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                        </svg>
+                    </button>
+
+                    <img src="./images/coca_cola.png" alt="Refrigerante"
+                        class="w-full h-24 object-contain mb-2 mt-2 transition-transform duration-300 drop-shadow-sm group-hover:scale-105 pointer-events-none relative z-10 ">
+                    <div class="text-left w-full mt-auto relative z-10 pointer-events-none">
+                        <h4 class="font-bold text-dark text-sm leading-tight">Refrigerante</h4>
+                        <p class="text-primary font-black text-lg leading-none mt-1 ">R$ 8,00</p>
+                    </div>
+                    <button onclick="adicionarItem('s_5', 'Refrigerante', 8.00 )"
+                        class="w-full bg-primary text-white py-2 rounded-xl text-xs font-bold mt-3 shadow-md hover:bg-red-700 active:scale-95 transition-all z-10 relative ">
+                        Adicionar ao carrinho
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div id="cat-bebidas" class="categoria-conteudo hidden">
+        <div class="grid-cols-2 gap-4">
+            <div
+                class="bg-white rounded-[20px] p-3 shadown-sm border border-gray-100 relative flex flex-col hover:shadow-md transition-shadown group">
+                <div class="absolute inset-0 z-0 cursor-pointer"
+                    onclick="abrirModalDetalhes('Suco de Laranja',14.00 , './images/suco_laranja.png', 's_6' )">
+
+                </div>
+                <button class="absolute top-3 right-3 text-gray-300 hover:text-primary transition-colors z-10">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                        stroke="currentColor" class="w-5 h-5">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                    </svg>
+                </button>
+
+                <img src="./images/suco_laranja.png" alt="Suco de Laranja"
+                    class="w-full h-24 object-contain mb-2 mt-2 transition-transform duration-300 drop-shadow-sm group-hover:scale-105 pointer-events-none relative z-10 ">
+                <div class="text-left w-full mt-auto relative z-10 pointer-events-none">
+                    <h4 class="font-bold text-dark text-sm leading-tight">Suco de Laranja</h4>
+                    <p class="text-primary font-black text-lg leading-none mt-1 ">R$ 14,00</p>
+                </div>
+                <button onclick="adicionarItem('s_6', 'Suco de Laranja', 14.00 )"
+                    class="w-full bg-primary text-white py-2 rounded-xl text-xs font-bold mt-3 shadow-md hover:bg-red-700 active:scale-95 transition-all z-10 relative ">
+                    Adicionar ao carrinho
+                </button>
+            </div>
+
+
+        </div>
+        </div>
+
+         <div id="cat-bebidas" class="categoria-conteudo hidden">
+        <div class="grid-cols-2 gap-4">
+            <div
+                class="bg-white rounded-[20px] p-3 shadown-sm border border-gray-100 relative flex flex-col hover:shadow-md transition-shadown group">
+                <div class="absolute inset-0 z-0 cursor-pointer"
+                    onclick="abrirModalDetalhes('Aperol Spritz',24.00 , './images/suco_laranja.png', 's_7' )">
+
+                </div>
+                <button class="absolute top-3 right-3 text-gray-300 hover:text-primary transition-colors z-10">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                        stroke="currentColor" class="w-5 h-5">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                    </svg>
+                </button>
+
+                <img src="./images/suco_laranja.png" alt="Aperol Spritz"
+                    class="w-full h-24 object-contain mb-2 mt-2 transition-transform duration-300 drop-shadow-sm group-hover:scale-105 pointer-events-none relative z-10 ">
+                <div class="text-left w-full mt-auto relative z-10 pointer-events-none">
+                    <h4 class="font-bold text-dark text-sm leading-tight">Aperol Spritz</h4>
+                    <p class="text-primary font-black text-lg leading-none mt-1 ">R$ 24,00</p>
+                </div>
+                <button onclick="adicionarItem('s_7', 'Aperol Spritz', 24.00 )"
+                    class="w-full bg-primary text-white py-2 rounded-xl text-xs font-bold mt-3 shadow-md hover:bg-red-700 active:scale-95 transition-all z-10 relative ">
+                    Adicionar ao carrinho
+                </button>
+            </div>
+
+
+        </div>
+        </div>
+
+        <div id="cat-bebidas" class="categoria-conteudo hidden">
+        <div class="grid-cols-2 gap-4">
+            <div
+                class="bg-white rounded-[20px] p-3 shadown-sm border border-gray-100 relative flex flex-col hover:shadow-md transition-shadown group">
+                <div class="absolute inset-0 z-0 cursor-pointer"
+                    onclick="abrirModalDetalhes('Água',4.00 , './images/suco_laranja.png', 's_8' )">
+
+                </div>
+                <button class="absolute top-3 right-3 text-gray-300 hover:text-primary transition-colors z-10">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                        stroke="currentColor" class="w-5 h-5">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                    </svg>
+                </button>
+
+                <img src="./images/suco_laranja.png" alt="Água"
+                    class="w-full h-24 object-contain mb-2 mt-2 transition-transform duration-300 drop-shadow-sm group-hover:scale-105 pointer-events-none relative z-10 ">
+                <div class="text-left w-full mt-auto relative z-10 pointer-events-none">
+                    <h4 class="font-bold text-dark text-sm leading-tight">Água</h4>
+                    <p class="text-primary font-black text-lg leading-none mt-1 ">R$ 4,00</p>
+                </div>
+                <button onclick="adicionarItem('s_8', 'Água', 4.00 )"
+                    class="w-full bg-primary text-white py-2 rounded-xl text-xs font-bold mt-3 shadow-md hover:bg-red-700 active:scale-95 transition-all z-10 relative ">
+                    Adicionar ao carrinho
+                </button>
+            </div>
+
+
+        </div>
+        </div>
+
+        <!--RISOTOS-->
+
+         <div id="cat-risotos" class="categoria-conteudo hidden">
+            <div class="text-left text-dark font-extrabold text-[22px] mt-8 mb-4 ">Risotos</div>
+           <div class="grid-cols-2 gap-4">
+                <div
+                    class="bg-white rounded-[20px] p-3 shadown-sm border border-gray-100 relative flex flex-col hover:shadow-md transition-shadown group">
+                    <div class="absolute inset-0 z-0 cursor-pointer"
+                        onclick="abrirModalDetalhes('Risotto alla Milanese',75.00 ,'O mais famoso, originário de Milão, leva açafrão, caldo de carne e tutano ', './images/coca_cola.png', 's_9' )">
+
+                    </div>
+                    <button class="absolute top-3 right-3 text-gray-300 hover:text-primary transition-colors z-10">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                            stroke="currentColor" class="w-5 h-5">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                        </svg>
+                    </button>
+
+                    <img src="./images/coca_cola.png" alt="Risotto alla Milanese"
+                        class="w-full h-24 object-contain mb-2 mt-2 transition-transform duration-300 drop-shadow-sm group-hover:scale-105 pointer-events-none relative z-10 ">
+                    <div class="text-left w-full mt-auto relative z-10 pointer-events-none">
+                        <h4 class="font-bold text-dark text-sm leading-tight">Risotto alla Milanese</h4>
+                        <p class="text-primary font-black text-lg leading-none mt-1 ">R$ 75,00</p>
+                    </div>
+                    <button onclick="adicionarItem('s_9', 'Risotto alla Milanese', 75.00 )"
+                        class="w-full bg-primary text-white py-2 rounded-xl text-xs font-bold mt-3 shadow-md hover:bg-red-700 active:scale-95 transition-all z-10 relative ">
+                        Adicionar ao carrinho
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div id="cat-risotos" class="categoria-conteudo hidden">
+        <div class="grid-cols-2 gap-4">
+            <div
+                class="bg-white rounded-[20px] p-3 shadown-sm border border-gray-100 relative flex flex-col hover:shadow-md transition-shadown group">
+                <div class="absolute inset-0 z-0 cursor-pointer"
+                    onclick="abrirModalDetalhes('Risotto ai Funghi',98.00 ,'Clássico com cogumelos, comum na região de Verona', './images/suco_laranja.png', 's_10' )">
+
+                </div>
+                <button class="absolute top-3 right-3 text-gray-300 hover:text-primary transition-colors z-10">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                        stroke="currentColor" class="w-5 h-5">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                    </svg>
+                </button>
+
+                <img src="./images/suco_laranja.png" alt="Risotto ai Funghi"
+                    class="w-full h-24 object-contain mb-2 mt-2 transition-transform duration-300 drop-shadow-sm group-hover:scale-105 pointer-events-none relative z-10 ">
+                <div class="text-left w-full mt-auto relative z-10 pointer-events-none">
+                    <h4 class="font-bold text-dark text-sm leading-tight">Risotto ai Funghi</h4>
+                    <p class="text-primary font-black text-lg leading-none mt-1 ">R$ 98,00</p>
+                </div>
+                <button onclick="adicionarItem('s_10', 'Risotto ai Funghi', 98.00 )"
+                    class="w-full bg-primary text-white py-2 rounded-xl text-xs font-bold mt-3 shadow-md hover:bg-red-700 active:scale-95 transition-all z-10 relative ">
+                    Adicionar ao carrinho
+                </button>
+            </div>
+
+
+        </div>
+        </div>
+
+
+         <div id="cat-risotos" class="categoria-conteudo hidden">
+        <div class="grid-cols-2 gap-4">
+            <div
+                class="bg-white rounded-[20px] p-3 shadown-sm border border-gray-100 relative flex flex-col hover:shadow-md transition-shadown group">
+                <div class="absolute inset-0 z-0 cursor-pointer"
+                    onclick="abrirModalDetalhes('Risotto al Limone Siciliano',85.00 ,'Variação fresca e cítrica, típica de Sorrento', './images/suco_laranja.png', 's_11' )">
+
+                </div>
+                <button class="absolute top-3 right-3 text-gray-300 hover:text-primary transition-colors z-10">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                        stroke="currentColor" class="w-5 h-5">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                    </svg>
+                </button>
+
+                <img src="./images/suco_laranja.png" alt="Risotto al Limone Siciliano"
+                    class="w-full h-24 object-contain mb-2 mt-2 transition-transform duration-300 drop-shadow-sm group-hover:scale-105 pointer-events-none relative z-10 ">
+                <div class="text-left w-full mt-auto relative z-10 pointer-events-none">
+                    <h4 class="font-bold text-dark text-sm leading-tight">Risotto al Limone Siciliano</h4>
+                    <p class="text-primary font-black text-lg leading-none mt-1 ">R$ 85,00</p>
+                </div>
+                <button onclick="adicionarItem('s_11', 'Risotto al Limone Siciliano', 85.00 )"
+                    class="w-full bg-primary text-white py-2 rounded-xl text-xs font-bold mt-3 shadow-md hover:bg-red-700 active:scale-95 transition-all z-10 relative ">
+                    Adicionar ao carrinho
+                </button>
+            </div>
+
+
+        </div>
+        </div>
+
+
+        <div id="cat-risotos" class="categoria-conteudo hidden">
+        <div class="grid-cols-2 gap-4">
+            <div
+                class="bg-white rounded-[20px] p-3 shadown-sm border border-gray-100 relative flex flex-col hover:shadow-md transition-shadown group">
+                <div class="absolute inset-0 z-0 cursor-pointer"
+                    onclick="abrirModalDetalhes('Risotto alle Pere e Noci',85.00 ,'Risoto de abóbora doce e cremosa, tradicional de Mantova.', './images/suco_laranja.png', 's_12' )">
+
+                </div>
+                <button class="absolute top-3 right-3 text-gray-300 hover:text-primary transition-colors z-10">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                        stroke="currentColor" class="w-5 h-5">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                    </svg>
+                </button>
+
+                <img src="./images/suco_laranja.png" alt="Risotto alle Pere e Noci"
+                    class="w-full h-24 object-contain mb-2 mt-2 transition-transform duration-300 drop-shadow-sm group-hover:scale-105 pointer-events-none relative z-10 ">
+                <div class="text-left w-full mt-auto relative z-10 pointer-events-none">
+                    <h4 class="font-bold text-dark text-sm leading-tight">Risotto alle Pere e Noci</h4>
+                    <p class="text-primary font-black text-lg leading-none mt-1 ">R$ 85,00</p>
+                </div>
+                <button onclick="adicionarItem('s_12', 'Risotto alle Pere e Noci', 85.00 )"
+                    class="w-full bg-primary text-white py-2 rounded-xl text-xs font-bold mt-3 shadow-md hover:bg-red-700 active:scale-95 transition-all z-10 relative ">
+                    Adicionar ao carrinho
+                </button>
+            </div>
+
+
+        </div>
+        </div>
+
+
+
+        <!--SOBREMESAS-->
+         <div id="cat-sobremesas" class="categoria-conteudo hidden">
+            <div class="text-left text-dark font-extrabold text-[22px] mt-8 mb-4 ">Sobremesas</div>
+           <div class="grid-cols-2 gap-4">
+                <div
+                    class="bg-white rounded-[20px] p-3 shadown-sm border border-gray-100 relative flex flex-col hover:shadow-md transition-shadown group">
+                    <div class="absolute inset-0 z-0 cursor-pointer"
+                        onclick="abrirModalDetalhes('Tiramisù',22.00 ,'feita com biscoitos champanhe, café, mascarpone e cacau ', './images/coca_cola.png', 's_13' )">
+
+                    </div>
+                    <button class="absolute top-3 right-3 text-gray-300 hover:text-primary transition-colors z-10">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                            stroke="currentColor" class="w-5 h-5">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                        </svg>
+                    </button>
+
+                    <img src="./images/coca_cola.png" alt="Tiramisù"
+                        class="w-full h-24 object-contain mb-2 mt-2 transition-transform duration-300 drop-shadow-sm group-hover:scale-105 pointer-events-none relative z-10 ">
+                    <div class="text-left w-full mt-auto relative z-10 pointer-events-none">
+                        <h4 class="font-bold text-dark text-sm leading-tight">Tiramisù</h4>
+                        <p class="text-primary font-black text-lg leading-none mt-1 ">R$ 22,00</p>
+                    </div>
+                    <button onclick="adicionarItem('s_13', 'Tiramisù', 22.00 )"
+                        class="w-full bg-primary text-white py-2 rounded-xl text-xs font-bold mt-3 shadow-md hover:bg-red-700 active:scale-95 transition-all z-10 relative ">
+                        Adicionar ao carrinho
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="cat-sobremesas" class="categoria-conteudo hidden">
+        <div class="grid-cols-2 gap-4">
+            <div
+                class="bg-white rounded-[20px] p-3 shadown-sm border border-gray-100 relative flex flex-col hover:shadow-md transition-shadown group">
+                <div class="absolute inset-0 z-0 cursor-pointer"
+                    onclick="abrirModalDetalhes('Panna Cotta',21.00 ,'Sobremesa cremosa à base de creme de leite, açúcar e gelatina,frequentemente servida com calda de frutas vermelhas.', './images/suco_laranja.png', 's_14' )">
+
+                </div>
+                <button class="absolute top-3 right-3 text-gray-300 hover:text-primary transition-colors z-10">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                        stroke="currentColor" class="w-5 h-5">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                    </svg>
+                </button>
+
+                <img src="./images/suco_laranja.png" alt="Panna Cotta"
+                    class="w-full h-24 object-contain mb-2 mt-2 transition-transform duration-300 drop-shadow-sm group-hover:scale-105 pointer-events-none relative z-10 ">
+                <div class="text-left w-full mt-auto relative z-10 pointer-events-none">
+                    <h4 class="font-bold text-dark text-sm leading-tight">Panna Cotta</h4>
+                    <p class="text-primary font-black text-lg leading-none mt-1 ">R$ 21,00</p>
+                </div>
+                <button onclick="adicionarItem('s_14', 'Panna Cotta', 21.00 )"
+                    class="w-full bg-primary text-white py-2 rounded-xl text-xs font-bold mt-3 shadow-md hover:bg-red-700 active:scale-95 transition-all z-10 relative ">
+                    Adicionar ao carrinho
+                </button>
+            </div>
+
+
+        </div>
+        </div>
+
+         <div id="cat-sobremesas" class="categoria-conteudo hidden">
+        <div class="grid-cols-2 gap-4">
+            <div
+                class="bg-white rounded-[20px] p-3 shadown-sm border border-gray-100 relative flex flex-col hover:shadow-md transition-shadown group">
+                <div class="absolute inset-0 z-0 cursor-pointer"
+                    onclick="abrirModalDetalhes('Cannoli',20.00 ,'>Massa frita em formato de tubo, típica da Sicília, recheada com creme de ricota doce', './images/suco_laranja.png', 's_15' )">
+
+                </div>
+                <button class="absolute top-3 right-3 text-gray-300 hover:text-primary transition-colors z-10">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                        stroke="currentColor" class="w-5 h-5">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                    </svg>
+                </button>
+
+                <img src="./images/suco_laranja.png" alt="Cannoli"
+                    class="w-full h-24 object-contain mb-2 mt-2 transition-transform duration-300 drop-shadow-sm group-hover:scale-105 pointer-events-none relative z-10 ">
+                <div class="text-left w-full mt-auto relative z-10 pointer-events-none">
+                    <h4 class="font-bold text-dark text-sm leading-tight">Cannoli</h4>
+                    <p class="text-primary font-black text-lg leading-none mt-1 ">R$ 20,00</p>
+                </div>
+                <button onclick="adicionarItem('s_15', 'Cannoli', 20.00 )"
+                    class="w-full bg-primary text-white py-2 rounded-xl text-xs font-bold mt-3 shadow-md hover:bg-red-700 active:scale-95 transition-all z-10 relative ">
+                    Adicionar ao carrinho
+                </button>
+            </div>
+
+
+        </div>
+        </div>
+
+
+         <div id="cat-sobremesas" class="categoria-conteudo hidden">
+        <div class="grid-cols-2 gap-4">
+            <div
+                class="bg-white rounded-[20px] p-3 shadown-sm border border-gray-100 relative flex flex-col hover:shadow-md transition-shadown group">
+                <div class="absolute inset-0 z-0 cursor-pointer"
+                    onclick="abrirModalDetalhes('Gelato',14.00 ,'O sorvete italiano tradicional, com textura densa e sabores intensos.', './images/suco_laranja.png', 's_16' )">
+
+                </div>
+                <button class="absolute top-3 right-3 text-gray-300 hover:text-primary transition-colors z-10">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                        stroke="currentColor" class="w-5 h-5">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                    </svg>
+                </button>
+
+                <img src="./images/suco_laranja.png" alt="Gelato"
+                    class="w-full h-24 object-contain mb-2 mt-2 transition-transform duration-300 drop-shadow-sm group-hover:scale-105 pointer-events-none relative z-10 ">
+                <div class="text-left w-full mt-auto relative z-10 pointer-events-none">
+                    <h4 class="font-bold text-dark text-sm leading-tight">Gelato</h4>
+                    <p class="text-primary font-black text-lg leading-none mt-1 ">R$ 14,00</p>
+                </div>
+                <button onclick="adicionarItem('s_16', 'Gelato', 14.00 )"
+                    class="w-full bg-primary text-white py-2 rounded-xl text-xs font-bold mt-3 shadow-md hover:bg-red-700 active:scale-95 transition-all z-10 relative ">
+                    Adicionar ao carrinho
+                </button>
+            </div>
+
+
+        </div>
+        </div>
+
+
+
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="mt-24 text-center py-12 text-sm text-white bg-green-900">
+        <h3 class="text-lg font-bold mb-2">Salvatore Italian Food 🍝</h3>
+        <p>Avenida Antônio Carlos Comitre - Campolim - 123, Zona Sul - Sorocaba</p>
+        <p>WhatsApp: (15) 98765-4321</p>
+        <p>Aberto todos os dias das 14h às 23h</p>
+    </footer>
+
+    <!-- BOTÃO WHATSAPP -->
+    <a href="https://wa.me/5515987654321" target="_blank" class="fixed bottom-5 right-5">
+        <img src="./images/whatsapp.png" alt="Link WhatsApp" class="h-[60px]">
+    </a>
+
+    <!--Script para botão categoria-->
+    <script>
+        const botoes = document.querySelectorAll('.btn-cat'); //varre o documento e seleciona qualquer coisa que tenha a classe btn-cat
+        const conteudos = document.querySelectorAll('.categoria-conteudo') //varre conteúdo e seleciona a categoria conteudo
+
+        function mudarCategoria(cat) {
+            //mostra apenas a categoria selecionada
+            conteudos.forEach(div => {
+                div.id === 'cat-' + cat ? div.classList.remove('hidden') : div.classList.add('hidden');
+            });
+
+            //atualiza estilo do botão ativo
+            botoes.forEach(btn => {
+                if (btn.dataset.cat === cat) {
+                    btn.classList.add('bg-primary', 'text-white');
+                    btn.classList.remove('bg-[#ebebeb]', 'text-dark');
+                } else {
+                    btn.classList.remove('bg-primary', 'text-white');
+                    btn.classList.add('bg-[#ebebeb]', 'text-dark');
+                }
+            });
+        }
+        //adiciona eventos a cada botão
+        // botoes.forEach(btn => {
+        //     btn.addEventListener('touchstart', () => {
+        //         btn.classList.add('scale-95');
+        //         mudarCategoria(btn.dataset.cat);
+        //     });
+        //     btn.addEventListener('touchend', () => {
+        //         btn.classList.remove('scale-95');
+        //     });
+        //     btn.addEventListener('click', () => {
+        //         mudarCategoria(btn.dataset.cat);
+        //     });
+        // });
+
+
+
+        //ativar scroll suave para links internos
+        let startX = 0;
+        let startY = 0;
+
+        //evento de cada botão
+        botoes.forEach(btn => {
+            //touchstart é disparado assim que o dedo toca tela
+            btn.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+                startY = e.touches[0].clientY;
+                //aplica class tailwind para efeito de clique
+                btn.classList.add('scale-95', 'opacity-80');
+            });
+            //touchend quando tira o dedo da tla
+            btn.addEventListener('touchend', (e) => {
+                //remove efeito visual
+                btn.classList.remove('scale-95', 'opacity-80');
+                //ultima posção do dedo ante de levantar
+                const endX = e.changedTouches[0].clientX;
+                const endY = e.changedTouches[0].clientY;
+                //calcula distância percorida pelo dedo em pixels
+                const deltaX = Math.abs(endX - startX);
+                const deltaY = Math.abs(endY - startY);
+
+                if (deltaX < 10 && deltaY < 10) {
+                    mudarCategoria(btn.dataset.cat);
+                }
+            });
+            //touchcancel se o celular aparecer uma ligação ou notificação popup
+            btn.addEventListener('touchcancel', () => {
+                btn.classList.remove('sacle-95', 'opacity-80');
+            });
+            //click para usuários desktop
+            btn.addEventListener('click', () => {
+                mudarCategoria(btn.dataset.cat);
+            })
+        });
+
+         //LÓGICA DO CARRINHO, LOCALSTORAGE E APIS
+        //modal detalhes do produto
+        
+        const modalDetalhes = document.getElementById('detalhes-modal');
+        const modalDetalhesContent = document.getElementById('detalhes-modal-content');
+
+        //Abre o Modal com informações do produto clicado
+        function abrirModalDetalhes(nome, preco, desc, img, id){
+            if(navigator.vibrate)navigator.vibrate(40);
+
+            document.getElementById('detalhes-nome').innerText = nome;
+            document.getElementById('detalhes-preco').innerText = preco.toLocaleString('pt-BR', {style:'currency', currency: 'BRL'});
+            document.getElementById('detalhes-desc').innerText = desc;
+            document.getElementById('detalhes-img').src =img;
+            document.getElementById('detalhes-btn-add').onclick =function(){
+                adicionarItem(id,nome,preco);
+                fecharModalDetalhes();
+            };
+            modalDetalhes.classList.remove('opacity-0', 'pointer-events-none');
+            setTimeout(() =>{
+                modalDetalhesContent.classList.remove('scale-95');
+                modalDetalhesContent.classList.add('sacle-100');
+            },10);
+        }
+
+        //fecha modal
+        function fecharModalDetalhes(){
+          modalDetalhesContent.classList.remove('scale-100');
+          modalDetalhesContent.classList.add('scale-95');
+          setTimeout(() => {
+            modalDetalhes.classList.add('opacity-0', 'pointer-events-none');
+          }, 300);
+        }
+        //area escura
+        modalDetalhes.addEventListener('click', function(e){
+            if(e.target === modalDetalhes) fecharModalDetalhes();
+        });
+
+  //carrinho
+  //array para armazenar itens do carrinho
+  let carrinho = [];
+
+  //elementos do DOM
+    const carrinhoFooter = document.getElementById('carrinho-footer');
+    const carrinhoTotalSpan = document.getElementById('carrinho-total');
+    //elementos do modal
+    const modal = document.getElementById('carrinho-modal');
+    const modalContent = document.getElementById('carrinho-modal-content');
+    const itensContainer = document.getElementById('carrinho-itens-container');
+    const modalTotalSpan = document.getElementById('modal-carrinho-total');
+    //verifica se o carrinho já tem itens salvos no locaalstorage
+    function inicializarCarrinho() {
+      const carrinhoSalvo = localStorage.getItem('salvatore_carrinho');
+      if (carrinhoSalvo) {
+        //se existe algo salvo converte de volta para array e atualiza o carrinho
+        carrinho = JSON.parse(carrinhoSalvo);
+        atualizarInterfaceCart();
+      }
+    }
+
+    //adicionar ao carrinho
+    function adicionarItem(id, nome, preco){
+      if (navigator.vibrate){
+         navigator.vibrate(200);
+      }
+      const index = carrinho.findIndex(item => item.id === id);
+
+      if (index !== -1) {
+        carrinho[index].quantidade += 1;
+      }else{
+        carrinho.push({
+          id: id,
+          nome: nome,
+          preco: preco,
+          quantidade: 1
+        });
+      }
+      atualizarCarrinho();
+    }
+
+    //função modal abrir e fechar do carrinho
+    function abrirModalCarrinho(){
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+      setTimeout(() => {
+        modalContent.classList.remove('translate-y-full', 'scale-95');
+      }, 10);
+    }
+
+     function fecharModalCarrinho(){
+      modalContent.classList.add('translate-y-full', 'scale-95');
+      setTimeout(() => {
+        modal.classList.add('opacity-0', 'pointer-events-none');
+      }, 300);
+    }
+
+    //controles dentro do modal do carrinho (aumentar, diminuir, remover itens)
+    //controle de (+ / -) quantidade
+    function aumentarQuantidade(id) {
+      const index = carrinho.findIndex(item => item.id === id);
+      if (index !== -1) {
+        carrinho[index].quantidade += 1;
+        atualizarCarrinho();
+        //efeito vibração para feedback tatil
+        if(navigator.vibrate) navigator.vibrate(50);
+      }
+    }
+
+    function diminuirQuantidade(id) {
+      const index = carrinho.findIndex(item => item.id === id);
+      if (index !== -1) {
+        if(carrinho[index].quantidade > 1) {
+          carrinho[index].quantidade -= 1;
+        }else {
+          carrinho.splice(index, 1);
+          if (carrinho.length === 0) {
+            fecharModalCarrinho();
+          }
+        }
+        atualizarCarrinho();
+        if (navigator.vibrate) navigator.vibrate(50);
+      }
+    }
+    
+    //persistência do carrinho no localstorage e atualização da interface
+    function atualizarCarrinho() {
+      localStorage.setItem('salvatore_carrinho', JSON.stringify(carrinho));
+      atualizarInterfaceCart();
+    } 
+    function atualizarInterfaceCart() {
+      if (carrinho.length === 0) {
+        carrinhoFooter.classList.add('translate-y-full');
+        return;
+      }
+      const total = carrinho.reduce((acc, item) =>
+      acc + (item.preco * item.quantidade), 0);
+      const totalFormatado = total.toLocaleString('pt-BR',
+        {style: 'currency', currency: 'BRL'});
+      carrinhoTotalSpan.innerText = totalFormatado;
+      modalTotalSpan.innerText = totalFormatado;
+
+      carrinhoFooter.classList.remove('translate-y-full');
+      renderizarItensModal();
+    }
+
+    //função para renderizar os itens do carrinho dentro do modal
+    function renderizarItensModal(){
+        if(!itensContainer) return;
+        itensContainer.innerHTML = '';
+        //para cada item no array, cria um HTML
+        carrinho.forEach(item =>{
+            const subTotal = (item.preco * item.quantidade).toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
+            const precoUnit = item.preco.toLocaleString('pt-BR', {style: 'currency' , currency: 'BRL'});
+            const divItem = document.createElement('div');
+            divItem.className = "flex justify-between items-center border-b pb-4 mt-2";
+
+            divItem.innerHTML = `
+            <div class="flex-1">
+                <h4 class="font-bold text-lg text-dark">${item.nome}</h4>
+                <p class="text-sm text-muted">${precoUnit}</p>
+                <p class"text-bold text-primary mt-1">${subTotal}</p>
+            </div>
+
+            <div class="flex items-center gap-3 bg-gray-100 p-2 rounded-xl">
+                <button onclick="diminuirQuantidade('${item.id}')"
+                class="w-8 h-8 flex justify-center items-center bg-white rounded-lg font-bold text-xl shadow-sm hover:text-primary active: scale-95 transition-all">-</button>
+                <span class="font-bold text-lg w-4 text-center">${item.quantidade}</span>
+                <button onclick="aumentarQuantidade('${item.id}')" class="w-8 h-8 flex justify-center items-center bg-white rounded-lg font-bold text-xl shadow-sm hover: text-primary active: scale-95 transition-all">+</button>
+            `;
+            itensContainer.appendChild(divItem);
+        })
+    }
+    //fechar pedido  (Geolocalização API - GPS)
+    function fecharPedido(){
+        if(carrinho.length === 0 ){
+            const btnPedido = document.getElementById('btn-fechar-pedido');
+            if(!btnPedido) return;
+            
+            const btnOriginalText = btnPedido.innerText;
+            btnPedido.innerText = "Buscando Localização...";
+
+            navigator.geolocation.getCurrentPosition(
+                (position) =>{
+                    const lat = posicao.coords.latitude;
+                    const lng = posicao.coords.longitude;
+                    
+                    btnPedido.innerText = btnOriginalText;
+
+                    alert(`Pedido Fechado com Sucesso ! \n Sua Localização: ${lat.toFixed(4)}, ${lng.toFixed(4)}\n Os dados do carrinho serão limpos`);
+
+                    carrinho = [];
+                    fecharModalCarrinho();
+                    atualizarCarrinho();
+                },
+                //callback de erro
+                (erro)=> {
+                    btnPedido.innerText = btnOriginalText;
+                    console.error(erro);
+                    alert("Não foi possível obter sua localização.");
+                    carrinho = [];
+                    fecharModalCarrinho();
+                    atualizarCarrinho();
+                }
+            );
+        }else{
+            alert(`Pedido Fechado com Sucesso!\n(navegador sem suporte GPS)`);
+            carrinho = [];
+            fecharModalCarrinho();
+            atualizarCarrinho();
+        }
+        inicializarCarrinho();
+    }
+    </script>
+</body>
+
+</html>
